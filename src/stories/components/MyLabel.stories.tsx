@@ -33,6 +33,12 @@ CustomTextColor.args = {
 	size: 'h1',
 	customTextColor: '#0f0'
 };
+export const CustomBackgroundColor = Template.bind({});
+CustomBackgroundColor.args = {
+	size: 'h1',
+	customTextColor: 'white',
+	backgroundColor: 'black'
+};
 
 export const Secondary = Template.bind({});
 Secondary.args = {

@@ -1,7 +1,35 @@
 {
-	"name": "my-storybook",
+	"name": "jdsc-my-storybook-1006",
 	"version": "0.1.0",
-	"private": true,
+	"private": false,
+	"license": "MIT",
+	"typings": "dist/index.d.ts",
+	"main": "dist/index.js",
+	"repository": {
+		"url": "https://github.com/juandsoto/sb-components",
+		"type": "git"
+	},
+	"release": {
+		"branches": [
+			"main"
+		]
+	},
+	"files": [
+		"dist",
+		"src"
+	],
+	"peerDependencies": {
+		"react": ">=16",
+		"typescript": ">=4.0.0"
+	},
+	"plugins": [
+		"@semantic-release/commit-analyzer",
+		"@semantic-release/release-notes-generator",
+		"@semantic-release/changelog",
+		"@semantic-release/github",
+		"@semantic-release/npm",
+		"@semantic-release/git"
+	],
 	"dependencies": {
 		"@testing-library/jest-dom": "^5.16.1",
 		"@testing-library/react": "^12.1.2",
@@ -17,9 +45,12 @@
 	},
 	"scripts": {
 		"start": "start-storybook -p 6006",
-		"build": "build-storybook",
+		"build": "npm run clean && tsc && npm run copy-files",
 		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"eject": "react-scripts eject",
+		"chromatic": "npx chromatic --project-token=976853f77bc1",
+		"clean": "rimraf dist/",
+		"copy-files": "copyfiles -u 1 src/**/*.css dist/"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -45,6 +76,8 @@
 		"@storybook/addon-essentials": "^6.4.12",
 		"@storybook/addon-links": "^6.4.12",
 		"@storybook/react": "^6.4.12",
-		"babel-loader": "^8.2.3"
+		"babel-loader": "^8.2.3",
+		"chromatic": "^6.4.0",
+		"rimraf": "^3.0.2"
 	}
 }
